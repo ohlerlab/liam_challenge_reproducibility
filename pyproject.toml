@@ -25,7 +25,7 @@ packages = [
   {include = "liam_NeurIPS2021_challenge_reproducibility"},
 ]
 readme = "README.md"
-version = "0.0.0"
+version = "0.0.1"
 
 [tool.poetry.dependencies]
 anndata = ">=0.7.5"

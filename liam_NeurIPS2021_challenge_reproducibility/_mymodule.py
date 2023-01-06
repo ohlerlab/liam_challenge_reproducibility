@@ -246,6 +246,7 @@ class LiamVAE(BaseModuleClass):
         library_log_vars: Optional[np.ndarray] = None,
         library_d_log_means: Optional[np.ndarray] = None,
         library_d_log_vars: Optional[np.ndarray] = None,
+        factor_adversarial_loss: float = 1.0,
         no_cond_decoder: bool = False,
     ):
         super().__init__()
@@ -336,6 +337,9 @@ class LiamVAE(BaseModuleClass):
                 "Dispersion for chromatin accessibility features must be one of ['constant', 'batch'],"
                 " but input was {}".format(self.dispersion_atac)
             )
+
+        self.factor_adversarial_loss = factor_adversarial_loss
+        logger.info("Adversarial loss * {}.".format(factor_adversarial_loss))
 
         # For development purpose
         self.no_cond_decoder = no_cond_decoder
@@ -734,7 +738,7 @@ class LiamVAE(BaseModuleClass):
             )
 
         loss = torch.mean(
-            reconst_loss + reconst_loss_peaks + weighted_kl_local + adversarial_loss
+            reconst_loss + reconst_loss_peaks + weighted_kl_local + self.factor_adversarial_loss * adversarial_loss
         )
 
         kl_local = dict(
@@ -1140,6 +1144,7 @@ class LiamVAE_ADT(BaseModuleClass):
         library_log_vars: Optional[np.ndarray] = None,
         library_d_log_means: Optional[np.ndarray] = None,
         library_d_log_vars: Optional[np.ndarray] = None,
+        factor_adversarial_loss: float = 1.0,
         no_cond_decoder: bool = False,
     ):
         super().__init__()
@@ -1228,6 +1233,9 @@ class LiamVAE_ADT(BaseModuleClass):
                 "Dispersion for CLR transformed ADT features must be one of ['ADT', 'ADT-batch'],"
                 " but input was {}".format(self.dispersion_ADT)
             )
+
+        self.factor_adversarial_loss = factor_adversarial_loss
+        logger.info("Adversarial loss * {}.".format(factor_adversarial_loss))
 
         # For development purpose
         self.no_cond_decoder = no_cond_decoder
@@ -1612,7 +1620,7 @@ class LiamVAE_ADT(BaseModuleClass):
             )
 
         loss = torch.mean(
-            reconst_loss + reconst_loss_ADT + weighted_kl_local + adversarial_loss
+            reconst_loss + reconst_loss_ADT + weighted_kl_local + self.factor_adversarial_loss * adversarial_loss
         )
 
         kl_local = dict(

@@ -170,6 +170,8 @@ class Liam(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
     atac_only
         If `True` only the scATAC-seq module of the model will be trained.
         Data still needs to be in the obsm field of the AnnData object.
+    factor_adversarial_loss
+        Factor with which the adversarial loss is multiplied with.
     no_cond_decoder
         If `True` no batch labels are fed to the decoder. Default: `False`, for development purposes only.
     **model_kwargs
@@ -195,6 +197,7 @@ class Liam(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
         dispersion_atac: Literal["constant", "batch"] = "batch",
         rna_only: bool = False,
         atac_only: bool = False,
+        factor_adversarial_loss: float = 1.0,
         no_cond_decoder: bool = False,
         **model_kwargs,
     ):
@@ -248,6 +251,7 @@ class Liam(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
             library_log_vars=library_log_vars,
             library_d_log_means=library_d_log_means,
             library_d_log_vars=library_d_log_vars,
+            factor_adversarial_loss=factor_adversarial_loss,
             no_cond_decoder=no_cond_decoder,
             **model_kwargs,
         )
@@ -261,7 +265,8 @@ class Liam(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
                                      "dispersion_atac: {}, " \
                                      "n_hidden: {}, " \
                                      "n_latent: {}, " \
-                                     "n_batch: {}, ".format(rna_only,
+                                     "n_batch: {}, " \
+                                     "factor_adversarial_loss: {}.".format(rna_only,
                                                             atac_only,
                                                             adversarial_training,
                                                             conditional_training,
@@ -270,7 +275,8 @@ class Liam(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
                                                             dispersion_atac,
                                                             n_hidden,
                                                             n_latent,
-                                                            n_batch)
+                                                            n_batch,
+                                                            factor_adversarial_loss)
         # necessary line to get params that will be used for saving/loading
         self.init_params_ = self._get_init_params(locals())
 
@@ -591,6 +597,10 @@ class Liam_ADT(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
         If `True` only the scRNA-seq module of the model will be trained.
     ADT_only
         If `True` only the scATAC-seq module of the model will be trained. Data still needs to be in the obsm field of the AnnData object.
+    factor_adversarial_loss
+        Factor with which the adversarial loss is multiplied with.
+    no_cond_decoder
+        If `True` no batch labels are fed to the decoder. Default: `False`, for development purposes only.
     **model_kwargs
         Keyword args for :class:`~liam_NeurIPS2021_challenge_reproducibility.Liam`
     Examples
@@ -613,6 +623,7 @@ class Liam_ADT(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
         dispersion_ADT: Literal["ADT", "ADT-batch"] = "ADT-batch",
         rna_only: bool = False,
         ADT_only: bool = False,
+        factor_adversarial_loss: float = 1.0,
         no_cond_decoder: bool = False,
         **model_kwargs,
     ):
@@ -659,6 +670,7 @@ class Liam_ADT(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
             library_log_vars=library_log_vars,
             library_d_log_means=library_d_log_means,
             library_d_log_vars=library_d_log_vars,
+            factor_adversarial_loss=factor_adversarial_loss,
             no_cond_decoder=no_cond_decoder,
             **model_kwargs,
         )
@@ -671,7 +683,8 @@ class Liam_ADT(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
                                      "dispersion_ADT: {}, " \
                                      "n_hidden: {}, " \
                                      "n_latent: {}, " \
-                                     "n_batch: {}, ".format(rna_only,
+                                     "n_batch: {}, " \
+                                     "factor_adversarial_loss: {}.".format(rna_only,
                                                             ADT_only,
                                                             adversarial_training,
                                                             conditional_training,
@@ -679,7 +692,8 @@ class Liam_ADT(VAEMixin, UnsupervisedTrainingMixin, BaseModelClass):
                                                             dispersion_ADT,
                                                             n_hidden,
                                                             n_latent,
-                                                            n_batch)
+                                                            n_batch,
+                                                            factor_adversarial_loss)
         # necessary line to get params that will be used for saving/loading
         self.init_params_ = self._get_init_params(locals())
 
