@@ -12,10 +12,22 @@ This repository freezes the code that was used to participate in the NeurIPS 202
 If you are using liam in its current form please cite [[1]](#1).
 
 # Installation
-Coming soon.
+You can install liam with [anaconda](https://www.anaconda.com/) following the listed steps:
+
+```
+# create an anaconda environment from the provided yml file
+conda env create -f liam_challenge_reproducibility_dependencies.yml
+
+# activate the created environment
+conda activate liam_challenge_reproducibility_env
+
+# install liam  
+pip install https://github.com/ohlerlab/liam_challenge_reproducibility/archive/refs/tags/v0.0.1.zip
+```
+Liam was tested and developed in Python 3.8 on a Linux system running CentOS 7 using a Tesla-T4 graphic or Tesla-V100-SXM2-32GB graphic card with CUDA 11.3.
 
 # Usage example
-Coming soon.
+For a tutorial showing how to use liam, see [Tutorial](tutorials/notebooks/Liam_usage_example.ipynb).
 
 # Third-Party Acknowledgements
 Liam was built using the scvi-tools-skeleton repository (version 0.4.0) as a template and contains modified code from scvi-tools (version 0.14.3) [[2]](#2).
