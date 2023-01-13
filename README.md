@@ -42,7 +42,7 @@ The licenses of the third-party code are linked in the following and can be foun
 
 ## References
 <a id="1">[1]</a>
-Rautenstrauch, P. & Ohler, U. (2022) Liam tackles complex multimodal single-cell data integration challenges. bioRxiv DOI: 10.1101/2022.12.21.521399
+Rautenstrauch, P. & Ohler, U. (2022) [Liam tackles complex multimodal single-cell data integration challenges](https://www.biorxiv.org/content/10.1101/2022.12.21.521399v1). bioRxiv DOI: 10.1101/2022.12.21.521399
 
 <a id="2">[2]</a>
 Gayoso, A. et al. (2022) A Python library for probabilistic analysis of single-cell omics data. Nature Biotechnology DOI: 10.1038/s41587-021-01206-w
