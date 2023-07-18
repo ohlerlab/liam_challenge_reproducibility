@@ -1,7 +1,7 @@
 # Liam (legacy version used for analyses presented in [[1]](#1))
-For software under development see: https://github.com/ohlerlab/liam
+For software under development, see: https://github.com/ohlerlab/liam
 
-For analysis scripts see: https://github.com/ohlerlab/liam_manuscript_reproducibility
+For analysis scripts, see: https://github.com/ohlerlab/liam_manuscript_reproducibility
 
 Liam (**l**everaging **i**nformation **a**cross **m**odalities) is a variational autoencoder-based model for the simultaneous
 vertical (derives a joint low-dimensional embedding informed by both modalities) and horizontal (batch) integration of paired multimodal
