@@ -7,9 +7,9 @@ Liam (**l**everaging **i**nformation **a**cross **m**odalities) is a variational
 vertical (derives a joint low-dimensional embedding informed by both modalities) and horizontal (batch) integration of paired multimodal
 scRNA-seq and scATAC-seq data, and scRNA-seq and ADT data (CITE-seq; Liam_ADT).
 
-This repository freezes the code that was used to participate in the NeurIPS 2021 - Multimodal Single-Cell Data Integration challenge (release/tag v0.0.0), and a version of liam I used for experiments presented in the liam manuscript [[1]](#1), in which I scaled the adversarial loss (release/tag v0.0.1). 
+This repository freezes the code that was used to participate in the NeurIPS 2021 - Multimodal Single-Cell Data Integration challenge (release/tag v0.0.0) and a version of liam I used for experiments presented in the liam manuscript [[1]](#1), in which I scaled the adversarial loss (release/tag v0.0.1). 
 
-If you are using liam in its current form please cite [[1]](#1).
+If you are using liam in its current form, please cite [[1]](#1).
 
 # Installation
 You can install liam with [anaconda](https://www.anaconda.com/) following the listed steps:
@@ -27,13 +27,13 @@ pip install https://github.com/ohlerlab/liam_challenge_reproducibility/archive/r
 Liam was tested and developed in Python 3.8 on a Linux system running CentOS 7 using a Tesla-T4 graphic or Tesla-V100-SXM2-32GB graphic card with CUDA 11.3.
 
 # Usage example
-For a tutorial showing how to use liam, see [Tutorial](tutorials/notebooks/Liam_usage_example.ipynb).
+For a tutorial showing how to use liam for paired multimodal data integration, see [Tutorial paired](tutorials/notebooks/Liam_usage_example.ipynb); for a tutorial showing how to use liam in a mosaic integration scenario that includes scaling of the adversarial loss, see [Tutorial mosaic](tutorials/notebooks/Liam_usage_example_mosaic_adversary_x5.ipynb).
 
 # Third-Party Acknowledgements
 Liam was built using the scvi-tools-skeleton repository (version 0.4.0) as a template and contains modified code from scvi-tools (version 0.14.3) [[2]](#2).
 Additionally, liam adopts a negative binomial loss function for the reconstruction loss of the scATAC-seq data recently introduced by [[3]](#3).
 To this end, I translated the source code of the negative binomial loss function from [BAVARIA](https://github.com/BIMSBbioinfo/bavaria) [[3]](#3) to the PyTorch framework, which I indicate in the docstrings of the respective functions.
-The author of BAVARIA, Wolfgang Kopp granted an exception to use this loss function under a BSD 3-Clause License. Lastly, liam implements an experimental feature - batch adversarial training, as introduced by [[4]](#4) and independently implemented by [[3]](#3). In liam, I use a implementation that uses a gradient reversal layer as proposed in [[4]](#4). The gradient reversal layer used in liam stems from a public GitHub repository: fungtion/DANN.
+The author of BAVARIA, Wolfgang Kopp, granted an exception to use this loss function under a BSD 3-Clause License. Lastly, liam implements an experimental feature - batch adversarial training, as introduced by [[4]](#4) and independently implemented by [[3]](#3). In liam, I use an implementation that uses a gradient reversal layer as proposed in [[4]](#4). The gradient reversal layer used in liam stems from a public GitHub repository: fungtion/DANN.
 
 The licenses of the third-party code are linked in the following and can be found in the folder [THIRD-PARTY-LICENSES](THIRD-PARTY-LICENSES):
 - scvi-tools-skeleton: [license](THIRD-PARTY-LICENSES/scvi-tools-skeleton-LICENSE)
