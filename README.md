@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11085436.svg)](https://doi.org/10.5281/zenodo.11085436)
+
 # Liam (legacy version used for analyses presented in [[1]](#1))
 For software under development, see: https://github.com/ohlerlab/liam
 
